@@ -3,6 +3,11 @@
     margin: 20px;
 }
 
+#root{
+    width:800px;
+    margin:auto;
+}
+
 ol, ul {
     padding-left: 30px;
 }

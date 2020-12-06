@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { Form } from '../form/form';
 import Game from '../morpion/game';
-
+import './header.css';
 export class Header extends React.Component {
 
     render() {

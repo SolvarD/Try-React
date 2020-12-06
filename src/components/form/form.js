@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from "react-router-dom";
 import { User } from '../../model/user';
 import './form.css';
 import { LoginService } from '../../service/login.service';
+
 export class Form extends React.Component {
 
     error = {};
@@ -13,7 +13,6 @@ export class Form extends React.Component {
         console.log(this.state);
 
         LoginService.loginByEmailPassword('solvar@msn.com', 'totototo').then((g) => console.log(g));
-        LoginService.agoraLogin('solvar@msn.com', 'dah6d72').then((g) => console.log(g));
     }
 
     isSubmit = false;
@@ -34,7 +33,7 @@ export class Form extends React.Component {
 
         console.log(this.state);
         console.log(this.error);
-        
+
     }
 
     checkField = () => {
@@ -48,36 +47,60 @@ export class Form extends React.Component {
         return (
             <form onSubmit={this.submitForm}>
                 <div className="form-container">
-                    <div>
-                        <label>Firstname</label>
-                        <input className={this.error['firstname'] ? 'invalid' : ''} onChange={(event) => { this.handleChange('firstname', event.target.value) }} type="text" />
+                    <div className="field-container">
+                        <div>
+                            <label>Firstname</label>
+                        </div>
+                        <div>
+                            <input
+                                className={this.error['firstname'] ? 'invalid' : ''}
+                                onChange={(event) => { this.handleChange('firstname', event.target.value) }}
+                                type="text" />
+                        </div>
                     </div>
 
-                    <div>
-                        <label>Lastname</label>
-                        <input onChange={(event) => { this.handleChange('lastname', event.target.value) }} type="text" />
+                    <div className="field-container">
+                        <div>
+                            <label>Lastname</label>
+                        </div>
+                        <div>
+                            <input onChange={(event) => { this.handleChange('lastname', event.target.value) }} type="text" />
+                        </div>
                     </div>
 
-                    <div>
-                        <label>Age</label>
-                        <input type="number" onChange={(event) => { this.handleChange('age', event.target.value) }} />
+                    <div className="field-container">
+                        <div>
+                            <label>Age</label>
+                        </div>
+                        <div>
+                            <input type="number" onChange={(event) => { this.handleChange('age', event.target.value) }} />
+                        </div>
                     </div>
 
-                    <div>
-                        <label>Area</label>
-                        <select value={this.state.area} onChange={(event) => { this.handleChange('area', event.target.value) }}>
-                            <option value="Lille">Lille</option>
-                            <option value="Lyon">Lyon</option>
-                            <option value="Paris">Paris</option>
-                            <option value="Marseille">Marseille</option>
-                        </select>
+                    <div className="field-container">
+                        <div>
+                            <label>Area</label>
+                        </div>
+                        <div>
+                            <select value={this.state.area} onChange={(event) => { this.handleChange('area', event.target.value) }}>
+                                <option value="Lille">Lille</option>
+                                <option value="Lyon">Lyon</option>
+                                <option value="Paris">Paris</option>
+                                <option value="Marseille">Marseille</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div>
-                        <label>Gender</label>
-                        Male <input checked={this.state.gender === "M"} onChange={(event) => { this.handleChange('gender', event.target.value) }} type="radio" name="gender" value="M" />
+                    <div className="field-container">
+                        <div>
+                            <label>Gender</label>
+                        </div>
+                        <div>
+                            Male <input checked={this.state.gender === "M"} onChange={(event) => { this.handleChange('gender', event.target.value) }} type="radio" name="gender" value="M" />
                         Female <input checked={this.state.gender === "F"} onChange={(event) => { this.handleChange('gender', event.target.value) }} type="radio" name="gender" value="F" />
+                        </div>
                     </div>
+
                     <div>
                         <input type="submit" />
                     </div>
