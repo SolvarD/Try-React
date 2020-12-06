@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { User } from '../../model/user';
 import './form.css';
+import { LoginService } from '../../service/login.service';
 export class Form extends React.Component {
 
     error = {};
@@ -10,15 +11,20 @@ export class Form extends React.Component {
         super(props);
         this.state = new User();
         console.log(this.state);
+
+        LoginService.loginByEmailPassword('solvar@msn.com', 'totototo').then((g) => console.log(g));
+        LoginService.agoraLogin('solvar@msn.com', 'dah6d72').then((g) => console.log(g));
     }
 
-    
     isSubmit = false;
+
     handleChange = (field, event) => {
+        console.log('change', event)
         if (this.isSubmit) {
             this.checkField();
         }
-        this.setState(Object.assign(this.state, {[field]: event}))
+
+        this.setState(Object.assign(this.state, { [field]: event }));
     }
 
     submitForm = (event) => {
@@ -28,6 +34,7 @@ export class Form extends React.Component {
 
         console.log(this.state);
         console.log(this.error);
+        
     }
 
     checkField = () => {
@@ -43,17 +50,17 @@ export class Form extends React.Component {
                 <div className="form-container">
                     <div>
                         <label>Firstname</label>
-                        <input className={this.error['firstname'] ?'invalid':'' } onChange={(event) => { this.handleChange('firstname', event.target.value) }} type="text" />
+                        <input className={this.error['firstname'] ? 'invalid' : ''} onChange={(event) => { this.handleChange('firstname', event.target.value) }} type="text" />
                     </div>
 
                     <div>
                         <label>Lastname</label>
                         <input onChange={(event) => { this.handleChange('lastname', event.target.value) }} type="text" />
                     </div>
-               
+
                     <div>
                         <label>Age</label>
-                        <input type="number" onChange={(event) => { this.handleChange('age', event.target.value) }}/>
+                        <input type="number" onChange={(event) => { this.handleChange('age', event.target.value) }} />
                     </div>
 
                     <div>
@@ -69,7 +76,7 @@ export class Form extends React.Component {
                     <div>
                         <label>Gender</label>
                         Male <input checked={this.state.gender === "M"} onChange={(event) => { this.handleChange('gender', event.target.value) }} type="radio" name="gender" value="M" />
-                        Female <input checked={this.state.gender === "F"} onChange={(event) => { this.handleChange('gender', event.target.value) }} type="radio" name="gender" value="F"/>
+                        Female <input checked={this.state.gender === "F"} onChange={(event) => { this.handleChange('gender', event.target.value) }} type="radio" name="gender" value="F" />
                     </div>
                     <div>
                         <input type="submit" />
