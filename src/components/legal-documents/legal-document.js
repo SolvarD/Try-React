@@ -27,7 +27,6 @@ export class LegalDocument extends React.Component {
         });
 
         ToolsService.uploadFile('cni', event.target.files[0]).subscribe(item => {
-            console.log('item', item);
             if (item.formControlName === 'cni') {
                 
                // this.state.files['cni'].documentBase64 = item.content;//.split(',')[1];
@@ -69,7 +68,6 @@ export class LegalDocument extends React.Component {
     }
 
     render() {
-        let cniUploaded = this.cniUploaded();
         return (<div>
             <div>CNI</div>
             <div><input type="file" accept="image/*" onChange={this.fileSelected} /></div>
