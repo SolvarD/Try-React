@@ -18,8 +18,6 @@ export class Form extends React.Component {
     isSubmit = false;
 
     handleChange = (field, event) => {
-        console.log('change', event);
-
         this.setState(Object.assign(this.state, { [field]: event }));
         if (this.isSubmit) {
             this.checkField();

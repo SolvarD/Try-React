@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import { Form } from '../form/form';
 import Game from '../morpion/game';
 import './header.css';
+import LegalDocument from '../legal-documents/legal-document';
 export class Header extends React.Component {
 
     render() {
@@ -14,7 +15,10 @@ export class Header extends React.Component {
                             <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <Link to="/Form">Form</Link>
+                            <Link to="/form">Form</Link>
+                        </li>
+                        <li>
+                            <Link to="/legal-document">Documents</Link>
                         </li>
                         
                     </ul>
@@ -22,7 +26,8 @@ export class Header extends React.Component {
                     <hr />
                     <div className="main-route-place">
                         <Route exact path="/" component={Game} />
-                        <Route path="/Form" component={Form} />
+                        <Route path="/form" component={Form} />
+                        <Route path="/legal-document" component={LegalDocument} />
                     </div>
                 </div>
             </BrowserRouter>
