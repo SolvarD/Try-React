@@ -12,7 +12,6 @@ export class ToolsService {
         });
         
         if (file) {
-            console.log(file);
             reader.readAsDataURL(file);
         }
 

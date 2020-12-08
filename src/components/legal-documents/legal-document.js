@@ -16,7 +16,7 @@ export class LegalDocument extends React.Component {
         this.state = { files: this.files }
     }
     fileSelected = (event) => {
-
+        if (!event.target.files[0]) { return; }
         this.setState({
             files: {
                 cni: {
@@ -28,9 +28,6 @@ export class LegalDocument extends React.Component {
 
         ToolsService.uploadFile('cni', event.target.files[0]).subscribe(item => {
             if (item.formControlName === 'cni') {
-                
-               // this.state.files['cni'].documentBase64 = item.content;//.split(',')[1];
-
                 this.setState({
                     files: {
                         cni: {
@@ -50,7 +47,7 @@ export class LegalDocument extends React.Component {
         //images
         for (const key of Object.keys(this.files)) {
             if (this.files[key]) {
-                formData.append(key, this.files[key]);
+                formData.append(key, this.state.files[key].file);
             }
         }
 
